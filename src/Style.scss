@@ -1,0 +1,19 @@
+@import "./Styles/_Navbar";
+@import "./Styles/_Hero";
+@import "./Styles/_Booking";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  margin: 0 auto !important;
+  max-width: 120rem !important;
+  padding: 0 1.7rem !important;
+}

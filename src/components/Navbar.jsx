@@ -1,113 +1,47 @@
-import { Link } from "react-router-dom";
-import Logo from "../images/logo/logo.png";
+import React from "react";
+import logo from "../images/logo/logo.png";
 import { useState } from "react";
 
 function Navbar() {
-  const [nav, setNav] = useState(false);
-
-  const openNav = () => {
-    setNav(!nav);
-  };
-
+  const [mobile, setMobile] = useState(false);
   return (
     <>
       <nav>
-        {/* mobile */}
-        <div className={`mobile-navbar ${nav ? "open-nav" : ""}`}>
-          <div onClick={openNav} className="mobile-navbar__close">
-            <i className="fa-solid fa-xmark"></i>
-          </div>
+        <div
+          onClick={() => setMobile(!mobile)}
+          className={!mobile ? "mobile-navbar" : "mobile-navbar open"}
+        >
           <ul className="mobile-navbar__links">
-            <li>
-              <Link onClick={openNav} to="/">
-                Home
-              </Link>
+            <li onClick={() => setMobile(!mobile)}>
+              <a href="/">Home</a>
             </li>
-            <li>
-              <Link onClick={openNav} to="/about">
-                About
-              </Link>
+            <li onClick={() => setMobile(!mobile)}>
+              <a href="/about">About</a>
             </li>
-            <li>
-              <Link onClick={openNav} to="/models">
-                Models
-              </Link>
+            <li onClick={() => setMobile(!mobile)}>
+              <a href="/models">Models</a>
             </li>
-            <li>
-              <Link onClick={openNav} to="/testimonials">
-                Testimonials
-              </Link>
+            <li onClick={() => setMobile(!mobile)}>
+              <a href="/testimonials">Testimonials</a>
             </li>
-            <li>
-              <Link onClick={openNav} to="/team">
-                Our Team
-              </Link>
+            <li onClick={() => setMobile(!mobile)}>
+              <a href="/team">Our Team</a>
             </li>
-            <li>
-              <Link onClick={openNav} to="/contact">
-                Contact
-              </Link>
+            <li onClick={() => setMobile(!mobile)}>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
         </div>
-
-        {/* desktop */}
-
         <div className="navbar">
-          <div className="navbar__img">
-            <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-              <img src={Logo} alt="logo-img" />
-            </Link>
+          <div className="navbar-img">
+            <a href="/">
+              <img src={logo} alt="" />
+            </a>
           </div>
-          <ul className="navbar__links">
-            <li>
-              <Link className="home-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              {" "}
-              <Link className="about-link" to="/about">
-                About
-              </Link>
-            </li>
-            <li>
-              {" "}
-              <Link className="models-link" to="/models">
-                Vehicle Models
-              </Link>
-            </li>
-            <li>
-              {" "}
-              <Link className="testi-link" to="/testimonials">
-                Testimonials
-              </Link>
-            </li>
-            <li>
-              {" "}
-              <Link className="team-link" to="/team">
-                Our Team
-              </Link>
-            </li>
-            <li>
-              {" "}
-              <Link className="contact-link" to="/contact">
-                Contact
-              </Link>
-            </li>
-          </ul>
-          <div className="navbar__buttons">
-            <Link className="navbar__buttons__sign-in" to="/">
-              Sign In
-            </Link>
-            <Link className="navbar__buttons__register" to="/">
-              Register
-            </Link>
-          </div>
-
-          {/* mobile */}
-          <div className="mobile-hamb" onClick={openNav}>
-            <i className="fa-solid fa-bars"></i>
+          <div onClick={() => setMobile(!mobile)} className="hamburger">
+            <span className={!mobile ? "bar" : "bar bar1"}></span>
+            {!mobile && <span className="bar"></span>}
+            <span className={!mobile ? "bar" : "bar bar3"}></span>
           </div>
         </div>
       </nav>
