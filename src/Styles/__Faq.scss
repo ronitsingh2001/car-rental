@@ -1,0 +1,85 @@
+.faq-section {
+  background: url("./images/faq/car.png");
+  background-position: 0 70%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  padding: 6rem 0;
+
+  .faq-content {
+    display: flex;
+    flex-direction: column;
+    color: #010103;
+
+    &__title {
+      line-height: 1.5;
+      max-width: 64rem;
+      text-align: center;
+      margin: 0 auto;
+      font-family: "Poppins", sans-serif;
+
+      h5 {
+        font-size: 1.4rem;
+      }
+
+      h2 {
+        font-size: 2.6rem;
+        margin-bottom: 1.4rem;
+      }
+      p {
+        color: #706f7b;
+        font-size: 0.95rem;
+      }
+    }
+
+    .all-question {
+      margin-top: 3.4rem;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .faq-box {
+        background: #fff;
+        box-shadow: 0 10px 15px 0 rgb(0, 0, 0, 0.1);
+        color: #010103;
+        cursor: pointer;
+        width: 100%;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .question {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.4rem 1.5rem;
+        box-shadow: 0 3px 6px 0 rgb(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+        line-height: 1.4;
+
+        p {
+          font-size: 18px;
+          font-weight: 500;
+        //   font-family: "Rubik", sans-serif;
+        }
+      }
+
+      .active-question {
+        background-color: #ff4d30;
+        color: #fff;
+        box-shadow: 0 10px 15px 0 rgba(255, 83, 48, 0.35);
+      }
+      .answere {
+        color: #706f7b;
+        font-family: Rubik, sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 2rem;
+        transition: 0.4s ease;
+      }
+      .active-answere {
+        padding: 1.2rem 2rem;
+        max-height: max-content;
+      }
+    }
+  }
+}
