@@ -19,7 +19,7 @@ function Faq() {
             <div className="all-question">
               <div className="faq-box">
                 <div
-                  onClick={() => setActive(active==1?0:1)}
+                  onClick={() => setActive(active == 1 ? 0 : 1)}
                   id="q1"
                   className={`question ${active == 1 ? "active-question" : ""}`}
                 >
@@ -42,7 +42,7 @@ function Faq() {
               </div>
               <div className="faq-box">
                 <div
-                  onClick={() => setActive(2)}
+                  onClick={() => setActive(active == 2 ? 0 : 2)}
                   id="q2"
                   className={`question ${active == 2 ? "active-question" : ""}`}
                 >
@@ -65,7 +65,7 @@ function Faq() {
               </div>
               <div className="faq-box">
                 <div
-                  onClick={() => setActive(3)}
+                  onClick={() => setActive(active == 3 ? 0 : 3)}
                   id="q3"
                   className={`question ${active == 3 ? "active-question" : ""}`}
                 >

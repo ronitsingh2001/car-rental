@@ -1,7 +1,10 @@
-import React from "react";
-import car1 from "../images/cars-big/audia1.jpg";
+import React, { useState } from "react";
+import {fleet} from "../Constant";
 
 function Pick() {
+  // const fleet = fleet;
+  const [activeCar, setActiveCar] = useState(fleet[0]);
+
   return (
     <>
       <section className="pick-section">
@@ -17,49 +20,52 @@ function Pick() {
             </div>
             <div className="pick-content__car">
               <div className="pick-box">
-                <button className="coloured">Audi A1 S-Line</button>
-                <button>VW Golf 6</button>
-                <button>Toyota Camry</button>
-                <button>BMW 320 ModernLine</button>
-                <button>Mercedes-Benz GLK</button>
-                <button>VW Passat CC</button>
+                {fleet.map((car) => (
+                  <button
+                    onClick={() => setActiveCar(car)}
+                    className={`${car.id == activeCar?.id ? "coloured" : ""}`}
+                    key={car.name}
+                  >
+                    {car.name}
+                  </button>
+                ))}
               </div>
               <div className="car-box">
                 <div className="picked-car">
-                  <img src={car1} alt="" />
+                  <img src={activeCar?.img} alt="" />
                 </div>
                 <div className="picked-desc">
                   <div className="price">
-                    <span>$45&nbsp; </span>/ rent per day
+                    <span>$ {activeCar?.rent}&nbsp; </span>/ rent per day
                   </div>
                   <div className="table">
                     <div className="table__col">
                       <span>Model</span>
-                      <span>Audi</span>
+                      <span>{activeCar?.details.model}</span>
                     </div>
                     <div className="table__col">
                       <span>Mark</span>
-                      <span>A1</span>
+                      <span>{activeCar?.details.mark}</span>
                     </div>
                     <div className="table__col">
                       <span>Year</span>
-                      <span>2018</span>
+                      <span>{activeCar?.details.year}</span>
                     </div>
                     <div className="table__col">
                       <span>Doors</span>
-                      <span>4/5</span>
+                      <span>{activeCar?.details.door}</span>
                     </div>
                     <div className="table__col">
                       <span>AC</span>
-                      <span>Yes</span>
+                      <span>{activeCar?.details.ac}</span>
                     </div>
                     <div className="table__col">
                       <span>Transmission</span>
-                      <span>Manual</span>
+                      <span>{activeCar?.details.transmission}</span>
                     </div>
                     <div className="table__col">
                       <span>Fuel</span>
-                      <span>Gasoline</span>
+                      <span>{activeCar?.details.fuel}</span>
                     </div>
                   </div>
                   <a href="#booking-section" className="cta-btn">

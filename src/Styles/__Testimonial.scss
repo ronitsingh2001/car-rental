@@ -31,17 +31,35 @@
         .all-testimonial{
             display: flex;
             flex-direction: column;
-            gap: 1.7rem;
-            justify-content: center;
+            gap: 1.7rem; 
+            margin: auto;
             width: 100%;
             font-family: 'Poppins', sans-serif;
             max-width: 32rem;
+            @media (min-width:800px) {
+                flex-direction: row;
+                max-width: max-content;
+                .box-2{
+                    display: block;
+                }
+            }
 
             &__box{
                 position: relative;
                 background-color: #fff;
                 box-shadow: 0 20px 40px 0 rgba(0,0,0,0.08);
                 padding: 4rem 2.5rem;
+                max-width: 35rem;
+
+                .quote-icon{
+                    position: absolute;
+                    bottom: 20%;
+                    right: 10%;
+                    i{
+                        color: #ff4d30;
+                        font-size: 4rem;
+                    }
+                }
                 
                 p{
                     font-size: 1.35rem;
@@ -76,5 +94,8 @@
             }
         }
 
+    }
+    .box-2{
+        display: none;
     }
 }

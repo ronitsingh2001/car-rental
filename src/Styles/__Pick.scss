@@ -24,8 +24,9 @@
       }
       p {
         color: #706f7b;
-        font-size: 0.9rem;
-        font-weight: 500;
+        font-size: 1.1rem;
+        font-family: "Rubik", sans-serif;
+        font-weight: 400;
       }
     }
     &__car {
@@ -37,15 +38,25 @@
       .pick-box {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 0.3rem;
         button {
           border: 2px solid transparent;
-          padding: 1rem 0.4rem;
+          min-width: 15rem;
+          padding: 0.7rem 1.5rem;
           text-align: start;
           font-size: 1.3rem;
           font-weight: 700;
           font-family: "Poppins", sans-serif;
+          transition: all 0.2s ease-in-out;
           cursor: pointer;
+          @media (min-width: 1000px) {
+            font-weight: 500;
+          }
+          &:hover {
+            background: #ff4d30;
+            color: #fff;
+          }
         }
         .coloured {
           background: #ff4d30;
@@ -61,13 +72,15 @@
         gap: 1rem;
         .picked-car {
           width: 100%;
-          padding: 2rem 0;
+          padding: 2rem 0.5rem;
           img {
             width: 100%;
+            max-width: 33rem;
+            // margin-left: 1rem;
           }
         }
         .picked-desc {
-          width: 17rem;
+          width: 30rem;
           .price {
             display: flex;
             align-items: center;
@@ -109,9 +122,25 @@
             padding: 0.5rem;
             font-size: 1.5rem;
             font-weight: 500;
+            transition: all 0.2s ease-in-out;
             box-shadow: 6px 6px 0 #efe9e9;
+
+            &:hover {
+              background-color: #e9381d;
+            }
           }
         }
+        @media (min-width: 680px) {
+          flex-direction: row;
+          gap: 5rem;
+        }
+        // @media (min-width:650px) {
+
+        // }
+      }
+      @media (min-width: 1000px) {
+        flex-direction: row;
+        justify-content: space-evenly;
       }
     }
   }

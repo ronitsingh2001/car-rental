@@ -1,0 +1,36 @@
+.hero-pages{
+    background-image: url('./images/hero/heroes-bg.png');
+    height: 27rem;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+
+    &__overlay{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255,255,255,0.75);
+    }
+    &__text{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+        color: #010103;
+        // z-index: 999;
+        height: 27rem;
+        h3{
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        a,p{
+            font-family: 'Rubik', sans-serif;
+            text-decoration: none;
+            color: #010103;
+            font-weight: 600;
+        }
+    }
+}

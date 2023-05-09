@@ -33,9 +33,20 @@
             gap: 2rem;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
             img{
                 width: 14rem;
             }
+        @media (min-width:700px) {
+            flex-direction: row;
         }
+        }
+
+        @media (min-width:700px) {
+            margin: 0;
+        }
+    }
+    @media (min-width:700px) {
+        background-image: url('./images/banners/bg02.png');
     }
 }

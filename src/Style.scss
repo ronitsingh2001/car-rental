@@ -8,11 +8,27 @@
 @import "./Styles/_Faq";
 @import "./Styles/_Download";
 @import "./Styles/_Footer";
+@import "./Styles/_HeroPage";
+@import "./Styles/_About";
+@import "./Styles/_Models";
+@import "./Styles/_Team";
+@import "./Styles/_Contact";
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  ::-webkit-scrollbar{
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: #ff4d30;
+    border-radius: 20px;
+  }
 }
 
 html {

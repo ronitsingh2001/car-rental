@@ -1,4 +1,5 @@
 import test1 from "../images/testimonials/pfp1.jpg";
+import test2 from "../images/testimonials/pfp2.jpg";
 
 const Testimonial = () => {
   return (
@@ -18,6 +19,9 @@ const Testimonial = () => {
             </div>
             <div className="all-testimonial">
               <div className="all-testimonial__box">
+                <span className="quote-icon">
+                  <i className="fa-solid fa-quote-right"></i>
+                </span>
                 <p>
                   "We rented a car from this website and had an amazing
                   experience! The booking was easy and the rental rates were
@@ -32,24 +36,25 @@ const Testimonial = () => {
                     </span>
                   </div>
                 </div>
-                {/* <div className="all-testimonial__box__name">
+              </div>{" "}
+              <div className="all-testimonial__box box-2">
+                <span className="quote-icon">
+                  <i className="fa-solid fa-quote-right"></i>
+                </span>
+                <p>
+                  "We rented a car from this website and had an amazing
+                  experience! The booking was easy and the rental rates were
+                  very affordable. "
+                </p>
+                <div className="all-testimonial__box__name">
                   <div className="all-testimonial__box__name__profile">
-                    <img src={test1} alt="" />
+                    <img src={test2} alt="" />
                     <span>
                       <h4>Harry potter</h4>
                       <p>belgrade</p>
                     </span>
                   </div>
                 </div>
-                <div className="all-testimonial__box__name">
-                  <div className="all-testimonial__box__name__profile">
-                    <img src={test1} alt="" />
-                    <span>
-                      <h4>Harry potter</h4>
-                      <p>belgrade</p>
-                    </span>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>

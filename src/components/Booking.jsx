@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import golf from "../images/cars-big/audia1.jpg";
+import { book } from "../Constant";
 
 function Booking() {
   const [modal, setModal] = useState(false);
 
+  console.log(book);
+
   return (
     <>
       <section className="booking" id="booking-section">
+        <div
+          onClick={() => setModal(false)}
+          className={`modal-overlay ${modal ? "active-overlay" : ""}`}
+        ></div>
         <div className="container">
           <div className="booking-content">
             <div className="booking-content__box">
@@ -26,14 +33,9 @@ function Booking() {
                   </label>
                   <select>
                     <option>Select your car type</option>
-                    <option value="Audi A1 S-Line">Audi A1 S-Line</option>
-                    <option value="VW Golf 6">VW Golf 6</option>
-                    <option value="Toyota Camry">Toyota Camry</option>
-                    <option value="BMW 320 ModernLine">
-                      BMW 320 ModernLine
-                    </option>
-                    <option value="Mercedes-Benz GLK">Mercedes-Benz GLK</option>
-                    <option value="VW Passat CC">VW Passat CC</option>
+                  {book.cars.map((i) => (
+                      <option>{i}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="box-form__field">
@@ -42,12 +44,10 @@ function Booking() {
                     <b>*</b>
                   </label>
                   <select>
-                    <option>Select pick up location</option>
-                    <option>Belgrade</option>
-                    <option>Novi Sad</option>
-                    <option>Nis</option>
-                    <option>Kragujevac</option>
-                    <option>Subotica</option>
+                  <option>Select pick up location</option>
+                  {book.pickUp.map((i) => (
+                      <option>{i}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="box-form__field">
@@ -56,12 +56,10 @@ function Booking() {
                     <b>*</b>
                   </label>
                   <select>
-                    <option>Select drop off location</option>
-                    <option>Novi Sad</option>
-                    <option>Belgrade</option>
-                    <option>Nis</option>
-                    <option>Kragujevac</option>
-                    <option>Subotica</option>
+                  <option>Select drop off location</option>
+                    {book.dropOff.map((i) => (
+                      <option>{i}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="box-form__field">
@@ -98,6 +96,7 @@ function Booking() {
         </div>
       </section>
       {/* BOOKING - MODAL */}
+
       <div className={!modal ? "booking-modal modal-open" : "booking-modal"}>
         <div className="booking-modal__title">
           <h2>Complete Reservation</h2>

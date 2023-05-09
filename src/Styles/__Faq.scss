@@ -36,6 +36,8 @@
       align-items: center;
       display: flex;
       flex-direction: column;
+      max-width: 55rem;
+      margin: 1rem auto;
 
       .faq-box {
         background: #fff;

@@ -43,6 +43,32 @@ function Navbar() {
             {!mobile && <span className="bar"></span>}
             <span className={!mobile ? "bar" : "bar bar3"}></span>
           </div>
+          <ul className="nav-links">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/models">Models</a>
+            </li>
+            <li>
+              <a href="/testimonials">Testimonials</a>
+            </li>
+            <li>
+              <a href="/team">Our Team</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
+          </ul>
+          <div className="nav-button">
+            <a href="#">Sign In</a>
+            <a href="#" className="register">
+              Register
+            </a>
+          </div>
         </div>
       </nav>
     </>

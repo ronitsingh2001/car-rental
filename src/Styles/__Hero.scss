@@ -17,7 +17,7 @@
       display: flex;
       flex-direction: column;
       margin-top: 3rem;
-      max-width: 50rem;
+      max-width: 30rem;
       z-index: 3;
       align-items: center;
       text-align: center;
@@ -62,20 +62,85 @@
           font-weight: 700;
         }
 
-        .book-ride,.learn-more {
+        .book-ride,
+        .learn-more {
           background: #ff4d30;
           border: #ff4d30 2px solid;
           padding: 1.2rem 5rem;
           border-radius: 0.2rem;
           box-shadow: 0 10px 15px rgba(255, 83, 48, 0.35);
           transition: all 0.3;
+          
         }
-        .learn-more{
-            background: #010103;
-            border-color: #010103;
-            box-shadow: 0 10px 10px rgba(0,0,0,.3);
+        .book-ride:hover {
+          background-color: #e9381d;
+        }
+        .learn-more {
+          background: #010103;
+          border-color: #010103;
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+          &:hover {
+            background-color: #202060;
+          }
+        }
+      }
+      @media (min-width: 800px) {
+        &__btns {
+          flex-direction: row !important;
+          .book-ride,
+          .learn-more {
+            padding: 1rem 1.5rem;
+          }
+        }
+        align-items: flex-start;
+        text-align: start;
+        h4 {
+          align-self: start;
         }
       }
     }
+    img {
+      margin-top: 3rem;
+      position: absolute;
+      right: 0;
+      width: 65%;
+      z-index: 2;
+      display: none;
+    }
+
+    @media (min-width: 800px) {
+      justify-content: flex-start;
+      img {
+        display: inline-block;
+      }
+    }
+  }
+  .bg-shape {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    display: none;
+    @media (min-width: 800px) {
+      display: inline-block;
+    }
+  }
+  .scroll-up {
+    display: none;
+    position: fixed;
+    bottom: 5%;
+    right: 10%;
+    background: #ff4d30;
+    padding: 0.6rem;
+    color: #ffff;
+    font-size: 1.4rem;
+    border: 3px solid #fff;
+    cursor: pointer;
+    transition: all 0.9s ease-in-out;
+    text-decoration: none;
+    z-index: 999;
+  }
+  .show {
+    display: flex;
   }
 }
