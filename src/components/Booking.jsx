@@ -1,11 +1,84 @@
 import React, { useState } from "react";
 import golf from "../images/cars-big/audia1.jpg";
 import { book } from "../Constant";
+import { useEffect } from "react";
 
 function Booking() {
   const [modal, setModal] = useState(false);
 
-  console.log(book);
+  const [carType, setCarType] = useState("");
+  const [pickUpLocation, setPickUpLocation] = useState("");
+  const [dropOffLocation, setDropOffLocation] = useState("");
+  const [pickUpDate, setPickUpDate] = useState("");
+  const [dropOffDate, setDropOffDate] = useState("");
+
+  const [firstName, setFirstName] = useState(" ");
+  const [lastname, setLastname] = useState(" ");
+  const [phone, setPhone] = useState(0);
+  const [age, setAge] = useState(0);
+  const [email, setEmail] = useState(" ");
+  const [address, setAddress] = useState(" ");
+  const [city, setCity] = useState(" ");
+  const [zip, setZip] = useState(" ");
+
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSearch = () => {
+    if (
+      carType === "" ||
+      pickUpLocation === "" ||
+      dropOffDate === "" ||
+      pickUpDate === "" ||
+      dropOffLocation === ""
+    ) {
+      setError(true);
+    } else {
+      setModal(true);
+    }
+  };
+
+  const handleRegister = () => {
+    if (
+      firstName === "" ||
+      lastname === "" ||
+      phone === "" ||
+      age === "" ||
+      age === 0 ||
+      phone === 0 ||
+      email === "" ||
+      zip === "" ||
+      city === "" ||
+      address === ""
+    ) {
+      setError(true);
+      setSuccess(false);
+    } else {
+      setError(false);
+      setSuccess(true);
+      setModal(false)
+    }
+  };
+
+  const handlePhone = (value) => {
+    setPhone(value);
+  };
+
+  const handleAge = (value) => {
+    setAge(value);
+  };
+
+  useEffect(() => {
+    if (
+      carType !== "" &&
+      pickUpLocation !== "" &&
+      dropOffDate !== "" &&
+      pickUpDate !== "" &&
+      dropOffLocation !== ""
+    ) {
+      setError(false);
+    }
+  }, [carType, pickUpDate, pickUpLocation, dropOffDate, dropOffLocation]);
 
   return (
     <>
@@ -18,23 +91,34 @@ function Booking() {
           <div className="booking-content">
             <div className="booking-content__box">
               <h2>Book a car</h2>
-              <p className="error-message">
-                All fields required! <i class="fa-solid fa-xmark"></i>
-              </p>
-              <p className="booking-done">
-                Check your eamil to confirm an order.{" "}
-                <i class="fa-solid fa-xmark"></i>
-              </p>
+              {error && (
+                <p className="error-message">
+                  All fields required!{" "}
+                  <i
+                    onClick={() => setError(false)}
+                    class="fa-solid fa-xmark"
+                  ></i>
+                </p>
+              )}
+              {success && (
+                <p className="booking-done">
+                  Check your email to confirm order.{" "}
+                  <i
+                    onClick={() => setSuccess(false)}
+                    className="fa-solid fa-xmark"
+                  ></i>
+                </p>
+              )}
               <form className="box-form">
                 <div className="box-form__field">
                   <label>
-                    <i class="fa-solid fa-car"></i> &nbsp; Select Your Car Type{" "}
-                    <b>*</b>
+                    <i className="fa-solid fa-car"></i> &nbsp; Select Your Car
+                    Type <b>*</b>
                   </label>
-                  <select>
-                    <option>Select your car type</option>
-                  {book.cars.map((i) => (
-                      <option>{i}</option>
+                  <select onChange={(e) => setCarType(e.target.value)}>
+                    <option value={""}>Select your car type</option>
+                    {book.cars.map((i, index) => (
+                      <option key={index}>{i}</option>
                     ))}
                   </select>
                 </div>
@@ -43,10 +127,10 @@ function Booking() {
                     <i className="fa-solid fa-location-dot"></i> &nbsp; Pick-up{" "}
                     <b>*</b>
                   </label>
-                  <select>
-                  <option>Select pick up location</option>
-                  {book.pickUp.map((i) => (
-                      <option>{i}</option>
+                  <select onChange={(e) => setPickUpLocation(e.target.value)}>
+                    <option value={""}>Select pick up location</option>
+                    {book.pickUp.map((i, index) => (
+                      <option key={index}>{i}</option>
                     ))}
                   </select>
                 </div>
@@ -55,10 +139,10 @@ function Booking() {
                     <i className="fa-solid fa-location-dot"></i> &nbsp; Drop-of{" "}
                     <b>*</b>
                   </label>
-                  <select>
-                  <option>Select drop off location</option>
-                    {book.dropOff.map((i) => (
-                      <option>{i}</option>
+                  <select onChange={(e) => setDropOffLocation(e.target.value)}>
+                    <option value={""}>Select drop off location</option>
+                    {book.dropOff.map((i, index) => (
+                      <option key={index}>{i}</option>
                     ))}
                   </select>
                 </div>
@@ -70,7 +154,7 @@ function Booking() {
                   <input
                     id="picktime"
                     // value={pickTime}
-                    // onChange={handlePickTime}
+                    onChange={(e) => setPickUpDate(e.target.value)}
                     type="date"
                   ></input>
                 </div>
@@ -83,11 +167,11 @@ function Booking() {
                   <input
                     id="droptime"
                     // value={dropTime}
-                    // onChange={handleDropTime}
+                    onChange={(e) => setDropOffDate(e.target.value)}
                     type="date"
                   ></input>
                 </div>
-                <button onClick={() => setModal(true)} type="button">
+                <button onClick={() => handleSearch()} type="button">
                   Search
                 </button>
               </form>
@@ -100,7 +184,10 @@ function Booking() {
       <div className={!modal ? "booking-modal modal-open" : "booking-modal"}>
         <div className="booking-modal__title">
           <h2>Complete Reservation</h2>
-          <i onClick={() => setModal(false)} className="fa-solid fa-xmark"></i>
+          <i
+            onClick={() => (setModal(false), setError(false))}
+            className="fa-solid fa-xmark"
+          ></i>
         </div>
         <div className="booking-modal__message">
           <h4>
@@ -122,7 +209,7 @@ function Booking() {
                 <div>
                   <h6>Pick-Up Date & Time</h6>
                   <p>
-                    2023-05-08 / <input type="time" className="input-time" />
+                    {pickUpDate} / <input type="time" className="input-time" />
                   </p>
                 </div>
               </span>
@@ -133,7 +220,7 @@ function Booking() {
                 <div>
                   <h6>Drop-Off Date & Time</h6>
                   <p>
-                    2023-05-08 / <input type="time" className="input-time" />
+                    {dropOffDate} / <input type="time" className="input-time" />
                   </p>
                 </div>
               </span>
@@ -143,7 +230,7 @@ function Booking() {
                 {/* <i className="fa-solid fa-location-dot"></i> */}
                 <div>
                   <h6>Pick-Up Location</h6>
-                  <p>X-location</p>
+                  <p>{pickUpLocation}</p>
                 </div>
               </span>
             </div>
@@ -152,7 +239,7 @@ function Booking() {
                 {/* <i className="fa-solid fa-location-dot"></i> */}
                 <div>
                   <h6>Drop-Off Loaction</h6>
-                  <p>Y-location</p>
+                  <p>{dropOffLocation}</p>
                 </div>
               </span>
             </div>
@@ -161,58 +248,95 @@ function Booking() {
           <div className="booking-modal__car-info__model">
             <h5>
               <span>Car - </span>
-              VW golf 6
+              {carType}
             </h5>
             <img src={golf} alt="" />
           </div>
         </div>
         <div className="booking-modal__personal-info">
           <h4>Personal Information</h4>
-          <form action="#" className="info-form">
+          <form className="info-form">
             <div className="info-form__2col">
               <span>
                 <label>
                   First Name <b>*</b>
                 </label>
-                <input type="text" placeholder="Enter your first name" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  type="text"
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="Enter your first name"
+                />
+                {firstName === "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
+
               <span>
                 <label>
                   Last Name <b>*</b>
                 </label>
-                <input type="text" placeholder="Enter your last name" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  onChange={(e) => setLastname(e.target.value)}
+                  type="text"
+                  placeholder="Enter your last name"
+                />
+                {lastname === "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
               <span>
                 <label>
                   Phone Number <b>*</b>
                 </label>
-                <input type="tel" placeholder="Enter your phone number" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  type="tel"
+                  onChange={(e) => handlePhone(e.target.value)}
+                  placeholder="Enter your phone number"
+                />
+                {phone === "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
               <span>
                 <label>
                   Age <b>*</b>
                 </label>
-                <input type="number" placeholder="18" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  onChange={(e) => handleAge(e.target.value)}
+                  type="number"
+                  placeholder="18"
+                />
+                {age === "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
             </div>
-            <div className="info-form__1col">
+            <div className="info-form__2col">
               <span>
                 <label>
                   Email <b>*</b>
                 </label>
-                <input type="email" placeholder="Enter your email address" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="Enter your email address"
+                />
+                {email == "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
               <span>
                 <label>
                   Address <b>*</b>
                 </label>
-                <input type="text" placeholder="Enter your street address" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  onChange={(e) => setAddress(e.target.value)}
+                  type="text"
+                  placeholder="Enter your street address"
+                />
+                {address == "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
             </div>
             <div className="info-form__2col">
@@ -220,23 +344,36 @@ function Booking() {
                 <label>
                   City <b>*</b>
                 </label>
-                <input type="text" placeholder="Enter your city" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  onChange={(e) => setCity(e.target.value)}
+                  type="text"
+                  placeholder="Enter your city"
+                />
+                {city == "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
               <span>
                 <label>
                   Zip Code <b>*</b>
                 </label>
-                <input type="text" placeholder="Enter your zip code" />
-                <p className="error-modal">This field is required.</p>
+                <input
+                  onChange={(e) => setZip(e.target.value)}
+                  type="text"
+                  placeholder="Enter your zip code"
+                />
+                {zip == "" && (
+                  <p className="error-modal">This field is required.</p>
+                )}
               </span>
             </div>
             <span className="info-form__checkbox">
               <input type="checkbox" />
               <p>Please send me latest news and updates</p>
             </span>
+
             <div className="reserve-button">
-              <button onClick={() => setModal(false)}>Reserve Now</button>
+              <button type="button" onClick={() => handleRegister()}>Reserve Now</button>
             </div>
           </form>
         </div>

@@ -318,7 +318,13 @@
   border-radius: 5px;
   margin-bottom: 1rem;
   line-height: 1.3;
-  display: none;
+  display: flex;
+  justify-content: space-between;
+  max-width: 30rem;
+}
+.booking-content__box .error-message i,
+.booking-content__box .booking-done i {
+  cursor: pointer;
 }
 .booking-content__box .booking-done {
   background: #c3fabe;
@@ -1232,7 +1238,11 @@ footer .footer-content .submit-email {
   margin-top: 0.9rem;
   color: #fff;
   font-weight: 600;
+  cursor: pointer;
   font-size: 1rem;
+}
+footer .footer-content .submit-email:hover {
+  background-color: #e9381d;
 }
 @media (min-width: 800px) {
   footer .footer-content {

@@ -1,3 +1,4 @@
+import { testimonials } from "../Constant";
 import test1 from "../images/testimonials/pfp1.jpg";
 import test2 from "../images/testimonials/pfp2.jpg";
 
@@ -18,7 +19,24 @@ const Testimonial = () => {
               </p>
             </div>
             <div className="all-testimonial">
-              <div className="all-testimonial__box">
+              {testimonials.map((test) => (
+                <div className="all-testimonial__box">
+                  <span className="quote-icon">
+                    <i className="fa-solid fa-quote-right"></i>
+                  </span>
+                  <p>"{test.review}"</p>
+                  <div className="all-testimonial__box__name">
+                    <div className="all-testimonial__box__name__profile">
+                      <img src={test.img} alt="" />
+                      <span>
+                        <h4>{test.name}</h4>
+                        <p>{test.city}</p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {/* <div className="all-testimonial__box">
                 <span className="quote-icon">
                   <i className="fa-solid fa-quote-right"></i>
                 </span>
@@ -55,7 +73,7 @@ const Testimonial = () => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
