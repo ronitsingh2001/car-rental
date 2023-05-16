@@ -36,44 +36,6 @@ const Testimonial = () => {
                   </div>
                 </div>
               ))}
-              {/* <div className="all-testimonial__box">
-                <span className="quote-icon">
-                  <i className="fa-solid fa-quote-right"></i>
-                </span>
-                <p>
-                  "We rented a car from this website and had an amazing
-                  experience! The booking was easy and the rental rates were
-                  very affordable. "
-                </p>
-                <div className="all-testimonial__box__name">
-                  <div className="all-testimonial__box__name__profile">
-                    <img src={test1} alt="" />
-                    <span>
-                      <h4>Harry potter</h4>
-                      <p>belgrade</p>
-                    </span>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="all-testimonial__box box-2">
-                <span className="quote-icon">
-                  <i className="fa-solid fa-quote-right"></i>
-                </span>
-                <p>
-                  "We rented a car from this website and had an amazing
-                  experience! The booking was easy and the rental rates were
-                  very affordable. "
-                </p>
-                <div className="all-testimonial__box__name">
-                  <div className="all-testimonial__box__name__profile">
-                    <img src={test2} alt="" />
-                    <span>
-                      <h4>Harry potter</h4>
-                      <p>belgrade</p>
-                    </span>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
