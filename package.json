@@ -17,7 +17,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build --repo https://github.com/ronitsingh2001/car-rental",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
