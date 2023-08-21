@@ -1,5 +1,6 @@
 {
   "name": "car-rental",
+  "homepage": "https://github.com/ronitsingh2001/car-rental",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
